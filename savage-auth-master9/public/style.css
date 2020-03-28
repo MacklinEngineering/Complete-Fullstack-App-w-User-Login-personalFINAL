@@ -1,0 +1,41 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+  background-image: url("img/statehouse.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+img{
+  height: 270px;
+  width: 270px;
+}
+
+h1{
+  font-family: copperplate;
+}
+
+.jumbotron{
+  background-color: inherit;
+}
+
+p{
+  color: white;
+}
+
+.btn-lg{
+  background-color: blue;
+  color: white;
+  border: none;
+}
+
+.DMsToLegislator{
+  color: black;
+}
+ul li{
+  list-style: none;
+}
+
+.well p{
+  color: grey;
+}

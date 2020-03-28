@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<!-- links to all the files main css, bootstrap etc -->
+<head>
+  <title>DM Your Congressperson</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="page-header text-center">
+      <h1><span class="fa fa-anchor"></span> Legislator Profile Page </h1>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      <!-- logout link -->
+    </div>
+
+    <div class="row">
+
+      <!-- LOCAL INFORMATION -->
+      <div class="col-sm-6">
+        <div class="well">
+          <h3> <img src="img/mommaMaxine.jpg" alt=""> </span> Congresswoman Maxine M. Waters, 43rd District of California</h3>
+
+          <% if (user.local.email) { %>
+          <p>
+            <strong>Congressional ID</strong>: <%= user._id %><br>
+            <strong>Legislator Email</strong>: <%= user.local.email %><br>
+            <strong>Legislator's Password (Encrypted)</strong>: <%= user.local.password %>
+          </p>
+
+          <a href="/unlink/local" class="btn btn-default">Delete Account</a>
+          <% } else { %>
+          <a href="/connect/local" class="btn btn-default">Connect Local</a>
+          <% } %>
+
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <!--  -->
+        <h3>Constituent Issues</h3>
+
+
+        <ul class="messages DMsToLegislator ">
+          <% for(var i=0; i< messages.length; i++) {%> <!-- a for loop to go over the class="message" displaying the name, message, thumbUp, thumbDown and trashcan. In addition to any other feature you want to add-->
+          <% if (user.local.email == messages[i].name) { %> <!-- if condition to only display user messages -->
+          <li class="message well">
+
+            <span><%= messages[i].name%></span>
+            <span><%= messages[i].msg %></span>
+            <span><%= messages[i].thumbUp -= messages[i].thumbDown %></span>
+            <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+            <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+            <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+            <span><i class="fas fa-save" aria-hidden="true"></i></span>
+          </li>
+          <% } %>
+          <% } %>
+        </ul>
+<!--  -->
+        <h2> Write Your Congresswoman</h2>
+        <% if (user.local.email) { %>
+        <form action="/messages" method="POST">
+          <input type="text" value="<%= user.local.email %>" name="name">
+          <!-- <span> <b>Your Name:</b> </span> <span><%= user.local.email %></span> -->
+          <!-- <textarea name="name" rows="5" cols="40" placeholder="Enter Your Message"></textarea> -->
+          <input type="text" placeholder="message" name="msg">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <% } %>
+
+    </div>
+    <script src="https://kit.fontawesome.com/077191d827.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>
