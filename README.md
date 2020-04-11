@@ -1,3 +1,5 @@
+![img](work-1.jpg)
+
 ## Installation
 
 1. Clone repo
