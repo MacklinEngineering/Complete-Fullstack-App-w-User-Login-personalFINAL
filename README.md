@@ -8,7 +8,7 @@
 ## Usage
 
 1. run `node server.js`
-2. Navigate to `localhost:8080`
+2. Navigate to `localhost:1001`
 
 ## Credit
 
